@@ -17,3 +17,13 @@ Read at the start of every session. One lesson per line group, with the measured
 - Overlays freeze `scene.frame`, so anything that walks in the camp waits while the newspaper is open (wanted).
 - Test in the browser with `tools/web-eye` (`serve`, `drive --stage 650x450 --browser /opt/pw-browsers/chromium`,
   `send`); its Python Playwright needs `pip install playwright==1.58.0` against the preinstalled Chromium.
+
+## 2026-11-21 (nowa gra)
+- The game is now an original title (own engine, art, synth music); the old bundle and its audio are gone:
+  plain build 560 KB instead of 2.4 MB. Source lives only inside the encrypted payload, as one script.
+- A headless balance run (whole game, auto-casting player, 30 runs) is the quick check after any stat change:
+  last run 42 matches to the end, battles ~30 s, win rate by league 92/66/79/84 %.
+- Headless Chromium draws ~110 crowd heads per frame at 41 fps; drawing the arena once into a buffer and the crowd
+  from cached sprites gave 44 fps there and 60 fps in camp. Keep static layers cached.
+- Stage coordinates in web-eye are game pixels (800x450 here), not screenshot pixels: a click from a 2x screenshot
+  must be halved.
